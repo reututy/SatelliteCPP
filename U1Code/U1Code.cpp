@@ -9,8 +9,14 @@ gom_eps_channelstates_t channels_state;
 
 void initialize_subsystems(gom_eps_hk_t* EpsTelemetry_hk, gom_eps_channelstates_t *channels_state, unsigned short* vbatt_previous)
 {
-
 	Boolean deployed = FALSE;
+
+	//initialize FRAM
+	FRAM_start();
+
+	//check if first activation
+	FRAM_read((unsigned char *)&not_first_activation, FIRST_ACTIVATION_ADDR, 4);
+	deployed = not_first_activation;
 
 	if (!deployed)
 	{

@@ -138,7 +138,7 @@ void init_trxvu(void)
 	}
 
 	//Initialize the trxvu subsystem
-	IsisTrxvu_initialize(myTRXVUAddress, myTRXVUBuffers, myTRXVUBitrates, 1);
+	//IsisTrxvu_initialize(myTRXVUAddress, myTRXVUBuffers, myTRXVUBitrates, 1);
 }
 
 int TRX_sendFrame(unsigned char* data, unsigned char length)

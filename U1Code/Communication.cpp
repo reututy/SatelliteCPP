@@ -89,7 +89,6 @@ char * __cdecl get_data(char * toSend, int toSendLenght)
 		return "error";
 	}
 
-	printf("Bytes Sent: %ld\n", iResult);
 
 	// shutdown the connection since no more data will be sent
 	iResult = shutdown(ConnectSocket, SD_SEND);
@@ -104,12 +103,10 @@ char * __cdecl get_data(char * toSend, int toSendLenght)
 	do {
 
 		iResult = recv(ConnectSocket, recvbuf, recvbuflen, 0);
-		if (iResult > 0)
-			printf("Bytes received: %d\n", iResult);
-		else if (iResult == 0)
+		/*if (iResult == 0)
 			printf("Connection closed\n");
 		else
-			printf("recv failed with error: %d\n", WSAGetLastError());
+			printf("recv failed with error: %d\n", WSAGetLastError());*/
 
 	} while (iResult > 0);
 

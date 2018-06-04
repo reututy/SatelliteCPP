@@ -34,11 +34,6 @@ typedef union _FRAMblockProtect{
 int FRAM_start(void);
 
 /*!
-* De-initializes the FRAM driver.
-*/
-void FRAM_stop(void);
-
-/*!
 * Writes data to the FRAM.
 * @param data Address where data to be written is stored.
 * @param address Location in the FRAM where data should be written.
@@ -59,38 +54,5 @@ int FRAM_write(unsigned char *data, unsigned int address, unsigned int size);
 * 0 on success.
 */
 int FRAM_read(unsigned char *data, unsigned int address, unsigned int size);
-
-
-/*!
-* Writes data to the FRAM and reads it back to verify that it was written correctly.
-* @param data Address where data to be written is stored.
-* @param address Location in the FRAM where data should be written.
-* @param size Number of bytes to write.
-* @return -3 written data didn't match the data read back from the FRAM,
-* -2 if the specified address and size are out of range,
-* -1 if obtaining lock for FRAM access fails,
-* 0 on success.
-*/
-int FRAM_writeAndVerify(unsigned char *data, unsigned int address, unsigned int size);
-
-/*!
-* Write protects or un-protects blocks of the FRAM.
-* @param blocks FRAMblockProtect structure specifying the blocks to protect.
-* @return -3 if the effective FRAM block protect configuration differs from the requested value
-* -2 if obtaining lock for FRAM access fails,
-* -1 if the SPI transfer fails,
-* 0 on success.
-*/
-int FRAM_protectBlocks(FRAMblockProtect blocks);
-
-/*!
-* Retrieves the Device ID of the FRAM chip.
-* @param deviceID Pointer to where the retrieved device ID should be stored
-* @return -1 if obtaining lock for FRAM access fails,
-* 0 on success.
-*
-* @note This function will copy 9 bytes to the memory location indicated by deviceID
-*/
-int FRAM_getDeviceID(unsigned char *deviceID);
 
 #endif /* FRAM_H_ */
