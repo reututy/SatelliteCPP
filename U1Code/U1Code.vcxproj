@@ -83,22 +83,31 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Communication.h" />
+    <ClInclude Include="EPS.h" />
+    <ClInclude Include="FRAM.h" />
     <ClInclude Include="FreeRTOS.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="GomEPS.h" />
     <ClInclude Include="IsisTRXVU.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="simulatorEPSFormat.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="trxvu.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Communication.cpp" />
+    <ClCompile Include="EPS.cpp" />
+    <ClCompile Include="FRAM.cpp" />
     <ClCompile Include="FreeRTOS.cpp" />
+    <ClCompile Include="Global.cpp" />
     <ClCompile Include="GomEPS.cpp" />
     <ClCompile Include="IsisTRXVU.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="trxvu.cpp" />
     <ClCompile Include="U1Code.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -7,6 +7,12 @@
 typedef unsigned int  Boolean;
 typedef unsigned char Boolean8bit;
 
+#define TRUE		0xFFFFFFFF
+#define FALSE		0
+
+#define TRUE_8BIT	0xFF
+#define FALSE_8BIT	0
+
 #define STATE_MUTE 0x01
 #define STATE_GS 0x02
 #define STATE_MNLP_ON 0x04
@@ -90,7 +96,6 @@ void convert_time_array(unsigned long t_l, unsigned char time[5]);
 void print_array(unsigned char *arr, int length);
 void switch_endian(unsigned char *in, int len);
 void double_little_endian(unsigned char* d);
-void kicktime(int n);
 void zero_initial_activation();
 void reset_subsystems(unsigned int reset_idx, gom_eps_channelstates_t channels_state);
 Boolean Get_Mute();
