@@ -61,9 +61,9 @@ void EPS_Power_Conditioning(gom_eps_hk_t* EPS_Cur_TLM, unsigned short* Vbatt_Pre
 void EPS_Init(gom_eps_hk_t* EPS_Cur_TLM, gom_eps_channelstates_t *channels_state, unsigned short* vbatt_previous)
 {
 	unsigned char EPS_addr = EPS_address;
-	//GomEpsInitialize(&EPS_addr, 1);
 	GomEpsGetHkData_general(0, EPS_Cur_TLM);
 	unsigned char voltages[EPS_VOLTAGE_SIZE];
+	FRAM_read(voltages, EPS_VOLTAGE_ADDR, EPS_VOLTAGE_SIZE);
 
 	if (EPS_Cur_TLM->fields.vbatt < voltages[0] * 100)
 	{
