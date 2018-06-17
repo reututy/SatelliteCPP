@@ -39,7 +39,7 @@ void initialize_subsystems(gom_eps_hk_t* EpsTelemetry_hk, gom_eps_channelstates_
 
 	//initialize trxvu
 	init_trxvu();
-	IsisTrxvu_tcSetAx25Bitrate(0, trxvu_bitrate_1200);
+	IsisTrxvu_tcSetAx25Bitrate(0, trxvu_bitrate_2400);
 }
 
 
@@ -53,7 +53,6 @@ int main(){
 	unsigned long pt;
 	unsigned char time_array[TIME_SIZE];
 	Boolean redeployed = 0;
-
 
 	Boolean deployed;
 
@@ -77,6 +76,7 @@ int main(){
 		// get House keeping power conditioning
 		GomEpsGetHkData_general(0, &EpsTelemetry_hk);
 		EPS_Power_Conditioning(&EpsTelemetry_hk, &vbatt_previous, &channels_state);
+		deployed = TRUE;
 	}
 
 	unsigned long pt_beacon = pt;

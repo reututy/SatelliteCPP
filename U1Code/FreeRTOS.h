@@ -14,9 +14,24 @@ typedef void(*pdTASK_CODE)(void *);
 
 typedef void * xTaskHandle;
 
+typedef unsigned long portTickType;
+
 typedef struct xMEMORY_REGION
 {
 	void *pvBaseAddress;
 	unsigned long ulLengthInBytes;
 	unsigned long ulParameters;
 } xMemoryRegion;
+
+typedef struct xTASK_PRPS
+{
+	pdTASK_CODE pxTaskCode;
+	unsigned short usStackDepth;
+	void *pvParameters;
+}xTasks;
+
+#define TASKS_AMOUNT 50
+
+void vTaskStartScheduler(void);
+portTickType xTaskGetTickCount(void);
+void vTaskDelete(xTaskHandle xTaskToDelete);
