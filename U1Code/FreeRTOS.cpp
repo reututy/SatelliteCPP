@@ -4,6 +4,7 @@
 #include <process.h> 
 #include <stdlib.h>
 #include <stdio.h>
+#include "Windows.h"
 
 xTasks tasks[TASKS_AMOUNT];
 int currTaskToAdd = 0;
@@ -13,7 +14,7 @@ char schedulerStarted = 0;
 * Generic version of the task creation function which is in turn called by the
 * xTaskCreate() and xTaskCreateRestricted() macros.
 */
-signed portBASE_TYPE xTaskGenericCreate(pdTASK_CODE pxTaskCode, const signed char * const pcName, unsigned short usStackDepth, void *pvParameters, unsigned portBASE_TYPE uxPriority, xTaskHandle *pxCreatedTask, portSTACK_TYPE *puxStackBuffer, const xMemoryRegion * const xRegions){
+signed portBASE_TYPE xTaskCreate(pdTASK_CODE pxTaskCode, const signed char * const pcName, unsigned short usStackDepth, void *pvParameters, unsigned portBASE_TYPE uxPriority, xTaskHandle *pxCreatedTask){
 	if (schedulerStarted == 0){
 		tasks[currTaskToAdd].pxTaskCode = pxTaskCode;
 		tasks[currTaskToAdd].usStackDepth = usStackDepth;

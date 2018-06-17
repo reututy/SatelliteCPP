@@ -32,6 +32,8 @@ typedef struct xTASK_PRPS
 
 #define TASKS_AMOUNT 50
 
+signed portBASE_TYPE xTaskCreate(pdTASK_CODE pxTaskCode, const signed char * const pcName, unsigned short usStackDepth, void *pvParameters, unsigned portBASE_TYPE uxPriority, xTaskHandle *pxCreatedTask);
+void vTaskDelay(const TickType_t xTicksToDelay);
 void vTaskStartScheduler(void);
 portTickType xTaskGetTickCount(void);
 void vTaskDelete(xTaskHandle xTaskToDelete);
