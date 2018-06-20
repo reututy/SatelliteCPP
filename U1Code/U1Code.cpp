@@ -47,33 +47,8 @@ void initialize_subsystems(gom_eps_hk_t* EpsTelemetry_hk, gom_eps_channelstates_
 	IsisTrxvu_tcSetAx25Bitrate(0, trxvu_bitrate_2400);
 }
 
-//void studentsCode(void *pvParameters) {
-//	/* Students main code */
-//
-//	TickType_t xNextWakeTime;
-//	const TickType_t xBlockTime = TASK_FREQUENCY_MS;
-//
-//	/* Initialise xNextWakeTime - this only needs to be done once. */
-//	xNextWakeTime = xTaskGetTickCount();
-//	for (;;) {
-//		vTaskDelay(xBlockTime);
-//		printf("Battery voltage: %u\n", 97);
-//		fflush(stdout);
-//	}
-//}
-
 
 int main(){
-
-	//xTaskCreate(studentsCode, "studentsCode", configMINIMAL_STACK_SIZE,
-	//	NULL,
-	//	BVATT_TASK_PRIORITY, NULL);
-
-	///*Should not be reached, because the students need to start sceduler by
-	//* themselves. if they haven't, this line start the tasks and timer running. */
-	//vTaskStartScheduler();
-	//for (;;){
-	//}
 
 	unsigned short vbatt_previous;
 
