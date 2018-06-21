@@ -153,6 +153,18 @@ int TRX_sendFrame(unsigned char* data, unsigned char length)
 }
 
 
+void enter_gs_mode(unsigned long *start_gs_time)
+{
+	printf("enter ground station mode");
+	// Enter ground station mode
+	states |= STATE_GS;
+
+	//Disable Mnlp
+	//glb_channels_state.fields.channel3V3_2 = 0;
+	//glb_channels_state.fields.channel5V_2 = 0;
+	//GomEpsSetOutput(0, glb_channels_state);
+}
+
 void end_gs_mode()
 {
 	printf("exit ground station mode");
@@ -163,6 +175,7 @@ void end_gs_mode()
 	//glb_channels_state.fields.channel5V_2 = 1;
 	//GomEpsSetOutput(0, glb_channels_state);
 }
+
 
 Boolean check_ants_deployed()// NOT WORKING CAUSE ISIS CODE
 {
@@ -209,3 +222,31 @@ void print_wod(short vbat, short vcur_5, short vcur_3, short eps_temp, short com
 	printf("com_temp %d\n", com_temp);
 	printf("bat_temp %d\n", bat_temp);
 }
+
+void trxvu_logic(gom_eps_channelstates_t channels_state)
+{
+	unsigned char receive_frm[SIZE_RXFRAME];
+	ISIStrxvuRxFrame rxFrameCmd = { 0, 0, 0, receive_frm };
+	unsigned short RxCounter = 0;
+	int i = 0;
+	// 5. check command receive
+	IsisTrxvu_rcGetFrameCount(0, &RxCounter);
+
+	if (RxCounter > 0)
+	{
+		IsisTrxvu_rcGetFrameCount(0, &RxCounter);
+		if (RxCounter>0)
+		{
+			IsisTrxvu_rcGetCommandFrame(0, &rxFrameCmd);
+			printf("RECEIVED PACKET\r\n");
+			for (i = 0; i<rxFrameCmd.rx_length; i++)
+			{
+				printf("%02x ", receive_frm[i]);
+
+			}
+			printf("\n\rEND RECEIVED PACKET\r\n");
+		}
+	}
+}
+
+
