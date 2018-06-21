@@ -56,7 +56,9 @@ typedef struct HKP_Struct {
 
 void EPS_Power_Conditioning(gom_eps_hk_t* EPS_Cur_TLM, unsigned short* Vbatt_Previous, gom_eps_channelstates_t* channels_state);
 void EPS_Init(gom_eps_hk_t* EPS_Cur_TLM, gom_eps_channelstates_t *channels_state, unsigned short* vbatt_previous);
-void Cruse(gom_eps_channelstates_t* channels_state);
+void Cruse0(gom_eps_channelstates_t* channels_state);
+void Cruse1(gom_eps_channelstates_t* channels_state);
+void Cruse2(gom_eps_channelstates_t* channels_state);
 void Safe(gom_eps_channelstates_t* channels_state);
 void Write_F_EPS_TLM(gom_eps_hk_t* EPS_CUR_TLM);
 void set_heater_values(char heater_params[2]);

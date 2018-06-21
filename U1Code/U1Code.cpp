@@ -100,5 +100,7 @@ int main(){
 		// 2. get telemetry EPS
 		GomEpsGetHkData_general(0, &EpsTelemetry_hk);
 
+		EPS_Power_Conditioning(&EpsTelemetry_hk, &vbatt_previous, &channels_state);
+
 	}
 }
